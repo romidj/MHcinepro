@@ -1,5 +1,20 @@
 import {defineQuery} from 'next-sanity'
 
+export const SERVICES_BACKGROUND_QUERY = defineQuery(/* groq */ `
+  *[_id == "services-background"][0]{
+    videos[]{
+      _key,
+      videoFile{
+        asset->{
+          url,
+          mimeType,
+          originalFilename
+        }
+      }
+    }
+  }
+`)
+
 export const LATEST_PROJECTS_QUERY = defineQuery(/* groq */ `
   *[_type == "project" && defined(publishedAt)]
     | order(publishedAt desc)[0...6]{

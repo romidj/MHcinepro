@@ -9,17 +9,19 @@ import {client} from '@/sanity/lib/client'
 import {
   LATEST_GALLERY_IMAGES_QUERY,
   LATEST_PROJECTS_QUERY,
+  SERVICES_BACKGROUND_QUERY,
   SITE_SETTINGS_QUERY,
 } from '@/sanity/lib/queries'
-import type {GalleryPreview, ProjectPreview, SiteSettings} from '@/sanity/lib/types'
+import type {GalleryPreview, ProjectPreview, ServicesBackground, SiteSettings} from '@/sanity/lib/types'
 
 export const revalidate = 60
 
 export default async function Home() {
-  const [projects, galleryImages, siteSettings] = await Promise.all([
+  const [projects, galleryImages, siteSettings, serviceBackground] = await Promise.all([
     client.fetch<ProjectPreview[]>(LATEST_PROJECTS_QUERY),
     client.fetch<GalleryPreview[]>(LATEST_GALLERY_IMAGES_QUERY),
     client.fetch<SiteSettings>(SITE_SETTINGS_QUERY),
+    client.fetch<ServicesBackground>(SERVICES_BACKGROUND_QUERY),
   ])
 
   return (
@@ -27,7 +29,7 @@ export default async function Home() {
       <Navbar />
       <main>
         <Hero />
-        <Services />
+        <Services background={serviceBackground} />
         <Projects projects={projects} />
         <Gallery images={galleryImages} />
         <Contact settings={siteSettings} />

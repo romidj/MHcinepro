@@ -1,3 +1,16 @@
+export type ServicesBackground = {
+  videos?: {
+    _key: string
+    videoFile?: {
+      asset?: {
+        url?: string
+        mimeType?: string
+        originalFilename?: string
+      }
+    }
+  }[]
+} | null
+
 export type ProjectPreview = {
   _id: string
   title?: string

@@ -1,3 +1,4 @@
+import {VideoBackground} from '@/components/sections/VideoBackground'
 import type {ServicesBackground} from '@/sanity/lib/types'
 
 const services = [
@@ -24,19 +25,12 @@ const services = [
 ]
 
 export function Services({background}: {background: ServicesBackground}) {
-  const videoUrl = background?.videos?.[0]?.videoFile?.asset?.url
+  const hasVideo = Boolean(background?.videos?.some((video) => video.videoFile?.asset?.url))
 
   return (
     <section id="services" className="relative min-h-[720px] overflow-hidden bg-brand-black py-16 md:py-20">
-      {videoUrl ? (
-        <video
-          className="absolute inset-0 h-full w-full object-cover opacity-45"
-          src={videoUrl}
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
+      {hasVideo ? (
+        <VideoBackground background={background} />
       ) : (
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.96),rgba(0,0,0,0.42),rgba(0,0,0,0.78)),radial-gradient(circle_at_48%_58%,rgba(255,118,24,0.24),transparent_30%),radial-gradient(circle_at_58%_58%,rgba(40,74,83,0.42),transparent_28%)]" />
       )}

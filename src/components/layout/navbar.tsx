@@ -43,9 +43,9 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 bg-black/55 backdrop-blur-md">
-      <nav className="section-shell flex min-h-16 items-center justify-between gap-6 py-3">
+      <nav className="section-shell flex min-h-14 items-center justify-between gap-6 py-2">
         <div className="flex items-center gap-4">
-          <Image src="/images/logo_mh.png" alt="MH CinePro" width={96} height={60} className="h-auto w-auto" />
+          <Image src="/images/logo_mh.png" alt="MH CinePro" width={82} height={52} className="h-auto w-auto" />
         </div>
         <div className="hidden flex-1 justify-center sm:flex">
           <div className="flex items-center gap-12 text-[13px] font-bold text-white/70">
@@ -56,7 +56,7 @@ export function Navbar() {
                 <a
                   key={item.id}
                   href={`#${item.id}`}
-                  className={`relative py-3 transition hover:text-brand-yellow ${
+                  className={`relative py-2.5 transition hover:text-brand-yellow ${
                     isActive ? 'text-brand-yellow' : ''
                   }`}
                   onClick={() => setActiveSection(item.id)}
@@ -71,14 +71,14 @@ export function Navbar() {
         <div className="flex items-center gap-4">
           <a
             href="#contact"
-            className="hidden bg-brand-yellow px-5 py-3 text-[13px] font-black text-black transition hover:-translate-y-0.5 hover:bg-white hover:shadow-cta sm:inline-flex sm:px-7"
+            className="hidden bg-brand-yellow px-5 py-2.5 text-[13px] font-black text-black transition hover:-translate-y-0.5 hover:bg-white hover:shadow-cta sm:inline-flex sm:px-6"
           >
             Contactez nous
           </a>
         </div>
         <button
           type="button"
-          className="ml-auto grid h-11 w-11 place-items-center border border-white/20 text-white sm:hidden"
+          className="ml-auto grid h-10 w-10 place-items-center border border-white/20 text-white sm:hidden"
           aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
           aria-expanded={isMenuOpen}
           onClick={() => setIsMenuOpen((open) => !open)}
