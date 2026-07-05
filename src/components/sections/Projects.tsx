@@ -17,7 +17,11 @@ export function Projects({projects}: {projects: ProjectPreview[]}) {
       <div className="section-shell">
         <div className="flex items-end justify-between gap-6">
           <h2 className="cinema-heading text-5xl text-white md:text-6xl">Nos projets</h2>
-          <Link href="/portfolio" className="border-b-2 border-brand-yellow pb-1 text-sm font-black text-brand-yellow">
+          <Link
+            href="/portfolio"
+            prefetch
+            className="border-b-2 border-brand-yellow pb-1 text-sm font-black text-brand-yellow"
+          >
             Voir tous les projets
           </Link>
         </div>

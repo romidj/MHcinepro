@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import {usePathname} from 'next/navigation'
 import {useEffect, useState} from 'react'
 import {Menu, X} from 'lucide-react'
 
@@ -12,10 +13,34 @@ const navItems = [
 ]
 
 export function Navbar() {
+  const pathname = usePathname()
   const [activeSection, setActiveSection] = useState('home')
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const isGalleryPage = pathname === '/galerie'
+  const isPortfolioPage = pathname === '/portfolio'
+  const activeNavItem = isGalleryPage ? 'gallery' : isPortfolioPage ? 'projects' : activeSection
+
+  function getNavHref(id: string) {
+    if (pathname === '/') {
+      return `#${id}`
+    }
+
+    if (isGalleryPage && id === 'gallery') {
+      return '/galerie'
+    }
+
+    if (isPortfolioPage && id === 'projects') {
+      return '/portfolio'
+    }
+
+    return `/#${id}`
+  }
 
   useEffect(() => {
+    if (pathname !== '/') {
+      return
+    }
+
     const sections = navItems
       .map((item) => document.getElementById(item.id))
       .filter((section): section is HTMLElement => Boolean(section))
@@ -39,27 +64,31 @@ export function Navbar() {
     sections.forEach((section) => observer.observe(section))
 
     return () => observer.disconnect()
-  }, [])
+  }, [pathname])
 
   return (
     <header className="sticky top-0 z-50 bg-black/55 backdrop-blur-md">
-      <nav className="section-shell flex min-h-14 items-center justify-between gap-6 py-2">
+      <nav className="section-shell flex items-center justify-between gap-6 ">
         <div className="flex items-center gap-4">
-          <Image src="/images/logo_mh.png" alt="MH CinePro" width={82} height={52} className="h-auto w-auto" />
+          <Image src="/images/logo_mh.png" alt="MH CinePro" width={66} height={40} className="h-auto w-auto" />
         </div>
         <div className="hidden flex-1 justify-center sm:flex">
           <div className="flex items-center gap-12 text-[13px] font-bold text-white/70">
             {navItems.map((item) => {
-              const isActive = activeSection === item.id
+              const isActive = activeNavItem === item.id
 
               return (
                 <a
                   key={item.id}
-                  href={`#${item.id}`}
-                  className={`relative py-2.5 transition hover:text-brand-yellow ${
+                  href={getNavHref(item.id)}
+                  className={`relative py-3 transition hover:text-brand-yellow ${
                     isActive ? 'text-brand-yellow' : ''
                   }`}
-                  onClick={() => setActiveSection(item.id)}
+                  onClick={() => {
+                    if (pathname === '/') {
+                      setActiveSection(item.id)
+                    }
+                  }}
                 >
                   {isActive && <span className="absolute left-0 top-0 h-1 w-full bg-brand-yellow" />}
                   {item.label}
@@ -70,15 +99,15 @@ export function Navbar() {
         </div>
         <div className="flex items-center gap-4">
           <a
-            href="#contact"
-            className="hidden bg-brand-yellow px-5 py-2.5 text-[13px] font-black text-black transition hover:-translate-y-0.5 hover:bg-white hover:shadow-cta sm:inline-flex sm:px-6"
+            href={pathname === '/' ? '#contact' : '/#contact'}
+            className="hidden bg-brand-yellow px-5 py-3 text-[13px] font-black text-black transition hover:-translate-y-0.5 hover:bg-white hover:shadow-cta sm:inline-flex sm:px-7"
           >
             Contactez nous
           </a>
         </div>
         <button
           type="button"
-          className="ml-auto grid h-10 w-10 place-items-center border border-white/20 text-white sm:hidden"
+          className="ml-auto grid h-11 w-11 place-items-center border border-white/20 text-white sm:hidden"
           aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
           aria-expanded={isMenuOpen}
           onClick={() => setIsMenuOpen((open) => !open)}
@@ -88,19 +117,21 @@ export function Navbar() {
       </nav>
       {isMenuOpen && (
         <div className="section-shell pb-5 sm:hidden">
-          <div className="grid gap-2 border border-white/10 bg-black/75 p-4 text-[13px] font-bold text-white/75 backdrop-blur-md">
+          <div className="grid gap-2 border border-white/10 bg-black/75 p-2 text-[13px] font-bold text-white/75 backdrop-blur-md">
             {navItems.map((item) => {
-              const isActive = activeSection === item.id
+              const isActive = activeNavItem === item.id
 
               return (
                 <a
                   key={item.id}
-                  href={`#${item.id}`}
+                  href={getNavHref(item.id)}
                   className={`relative px-3 py-3 transition hover:text-brand-yellow ${
                     isActive ? 'text-brand-yellow' : ''
                   }`}
                   onClick={() => {
-                    setActiveSection(item.id)
+                    if (pathname === '/') {
+                      setActiveSection(item.id)
+                    }
                     setIsMenuOpen(false)
                   }}
                 >
@@ -110,8 +141,8 @@ export function Navbar() {
               )
             })}
             <a
-              href="#contact"
-              className="mt-2 bg-brand-yellow px-5 py-3 text-center font-black text-black transition hover:bg-white hover:shadow-cta"
+              href={pathname === '/' ? '#contact' : '/#contact'}
+              className="mt-2 bg-brand-yellow px-5 py-8 text-center font-black text-black transition hover:bg-white hover:shadow-cta"
               onClick={() => setIsMenuOpen(false)}
             >
               Contactez nous

@@ -29,6 +29,31 @@ export const LATEST_PROJECTS_QUERY = defineQuery(/* groq */ `
     }
 `)
 
+export const PROJECTS_PAGE_QUERY = defineQuery(/* groq */ `
+  *[
+    _type == "project" &&
+    defined(publishedAt) &&
+    ($category == "all" || category == $category)
+  ] | order(publishedAt desc, _id desc)[$start...$end]{
+    _id,
+    title,
+    description,
+    videoUrl,
+    platform,
+    category,
+    thumbnail,
+    publishedAt
+  }
+`)
+
+export const PROJECTS_COUNT_QUERY = defineQuery(/* groq */ `
+  count(*[
+    _type == "project" &&
+    defined(publishedAt) &&
+    ($category == "all" || category == $category)
+  ])
+`)
+
 export const LATEST_GALLERY_IMAGES_QUERY = defineQuery(/* groq */ `
   *[_type == "galleryImage" && defined(createdAt)]
     | order(createdAt desc)[0...3]{
@@ -38,6 +63,28 @@ export const LATEST_GALLERY_IMAGES_QUERY = defineQuery(/* groq */ `
       image,
       createdAt
     }
+`)
+
+export const GALLERY_IMAGES_PAGE_QUERY = defineQuery(/* groq */ `
+  *[
+    _type == "galleryImage" &&
+    defined(createdAt) &&
+    ($category == "all" || category == $category)
+  ] | order(createdAt desc, _id desc)[$start...$end]{
+    _id,
+    caption,
+    category,
+    image,
+    createdAt
+  }
+`)
+
+export const GALLERY_IMAGES_COUNT_QUERY = defineQuery(/* groq */ `
+  count(*[
+    _type == "galleryImage" &&
+    defined(createdAt) &&
+    ($category == "all" || category == $category)
+  ])
 `)
 
 export const SITE_SETTINGS_QUERY = defineQuery(/* groq */ `

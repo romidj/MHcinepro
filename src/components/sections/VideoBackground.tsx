@@ -10,7 +10,7 @@ type VideoBackgroundProps = {
 type VideoItem = {
   key: string
   url: string
-  mimeType?: string
+  mimeType: string | undefined
 }
 
 export function VideoBackground({background}: VideoBackgroundProps) {

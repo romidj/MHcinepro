@@ -23,6 +23,7 @@ export function Gallery({images}: {images: GalleryPreview[]}) {
         </div>
         <Link
           href="/galerie"
+          prefetch
           className="mt-14 inline-flex border border-white px-14 py-5 font-display text-2xl uppercase text-white transition hover:border-brand-yellow hover:text-brand-yellow"
         >
           Voir toute la galerie
