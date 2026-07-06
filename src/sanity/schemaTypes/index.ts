@@ -4,6 +4,7 @@ import servicesBackground from './servicesBackground'
 import project from './project'
 import galleryImage from './galleryImage'
 import siteSettings from './siteSettings'
+import analyticsDaily from './analyticsDaily'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -11,5 +12,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     project,
     galleryImage,
     siteSettings,
+    analyticsDaily,
   ],
 }
