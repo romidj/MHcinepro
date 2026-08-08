@@ -15,7 +15,7 @@ export function Gallery({images}: {images: GalleryPreview[]}) {
   return (
     <section id="gallery" className="bg-brand-black py-14 md:py-20">
       <div className="section-shell text-center">
-        <h2 className="cinema-heading text-5xl text-white md:text-6xl">Notre galerie</h2>
+        <h2 className="cinema-heading text-5xl text-white md:text-6xl">Galerie</h2>
         <div className="mx-auto mt-10 grid max-w-5xl gap-10 md:grid-cols-3">
           {visibleImages.slice(0, 3).map((image, index) => (
             <GalleryCard key={image._id} image={image} index={index} />

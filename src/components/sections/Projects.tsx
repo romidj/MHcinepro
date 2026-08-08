@@ -16,7 +16,7 @@ export function Projects({projects}: {projects: ProjectPreview[]}) {
     <section id="projects" className="bg-brand-black py-16 md:py-20">
       <div className="section-shell">
         <div className="flex items-end justify-between gap-6">
-          <h2 className="cinema-heading text-5xl text-white md:text-6xl">Nos projets</h2>
+          <h2 className="cinema-heading text-5xl text-white md:text-6xl">Projets</h2>
           <Link
             href="/portfolio"
             prefetch

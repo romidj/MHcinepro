@@ -3,7 +3,7 @@ import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'galleryImage',
-  title: 'Photo de Galerie',
+  title: 'Photo de galerie',
   type: 'document',
   icon: ImageIcon,
   fields: [
@@ -11,6 +11,7 @@ export default defineType({
       name: 'image',
       title: 'Photo',
       type: 'image',
+      description: 'Image affichée dans la galerie du site.',
       options: {hotspot: true},
       validation: (Rule) => Rule.required(),
     }),
@@ -18,14 +19,14 @@ export default defineType({
       name: 'caption',
       title: 'Légende',
       type: 'string',
-      description: 'Texte affiché sous la photo (ex: "Djardjra, 2024")',
+      description: 'Texte affiché sous la photo, par exemple: "Djurdjura, 2024".',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'category',
       title: 'Catégorie',
       type: 'string',
-      description: 'Catégorie de la photo utilisée pour filtrer sur la page Galerie',
+      description: 'Catégorie utilisée pour filtrer les photos sur la page Galerie.',
       options: {
         list: [
           {title: 'Mariage', value: 'mariage'},
@@ -41,6 +42,7 @@ export default defineType({
       name: 'createdAt',
       title: 'Date de création',
       type: 'datetime',
+      description: 'Les photos les plus récentes apparaissent en premier.',
       initialValue: () => new Date().toISOString(),
       hidden: true,
     }),
@@ -48,7 +50,15 @@ export default defineType({
   preview: {
     select: {
       title: 'caption',
+      subtitle: 'category',
       media: 'image',
+    },
+    prepare({title, subtitle, media}) {
+      return {
+        title,
+        subtitle: subtitle ? `Catégorie: ${subtitle}` : undefined,
+        media,
+      }
     },
   },
 })

@@ -91,7 +91,7 @@ function ContactLine({icon, label, value}: {icon: ReactNode; label: string; valu
       <span className="grid h-9 w-9 place-items-center border border-brand-line text-white">{icon}</span>
       <div>
         <p className="text-[10px] font-black uppercase tracking-[0.16em] text-white/35">{label}</p>
-        <p className="font-display text-xl text-white">{value}</p>
+        <p className="font-mono text-base font-bold text-[#c2c2be]">{value}</p>
       </div>
     </div>
   )

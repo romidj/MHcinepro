@@ -70,7 +70,7 @@ export function Navbar() {
     <header className="sticky top-0 z-50 bg-black/55 backdrop-blur-md">
       <nav className="section-shell flex items-center justify-between gap-6 ">
         <div className="flex items-center gap-4">
-          <Image src="/images/logo_mh.png" alt="MH CinePro" width={66} height={40} className="h-auto w-auto" />
+          <Image src="/images/logo_mh.png" alt="MH CinePro" width={66} height={45} className="h-auto w-auto" />
         </div>
         <div className="hidden flex-1 justify-center sm:flex">
           <div className="flex items-center gap-12 text-[13px] font-bold text-white/70">

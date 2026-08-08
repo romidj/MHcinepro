@@ -6,6 +6,7 @@ export default defineType({
   title: 'Analytiques quotidiennes',
   type: 'document',
   icon: BarChartIcon,
+  readOnly: true,
   fields: [
     defineField({
       name: 'date',

@@ -61,17 +61,36 @@ function AnalyticsTool() {
     }
   }, [])
 
+  const maxDailyViews = Math.max(...(summary?.days.map((day) => day.pageViews) ?? [1]), 1)
+
   return (
     <div style={{minHeight: '100%', background: '#0f0f0f', color: '#fff', padding: 32}}>
-      <div style={{maxWidth: 1100, margin: '0 auto'}}>
-        <p style={{color: '#ffd60a', fontSize: 13, fontWeight: 800, letterSpacing: 3, textTransform: 'uppercase'}}>
-          MH CinePro
-        </p>
-        <h1 style={{fontSize: 44, lineHeight: 1, margin: '12px 0 8px'}}>Analytiques</h1>
-        <p style={{color: '#b5b5b5', maxWidth: 620, lineHeight: 1.6}}>
-          Vue simple des visites du site. Ces donnees sont agregees par jour et ne stockent aucune information
-          personnelle.
-        </p>
+      <div style={{maxWidth: 1120, margin: '0 auto'}}>
+        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24}}>
+          <div>
+            <p style={{color: '#ffd60a', fontSize: 13, fontWeight: 800, letterSpacing: 3, textTransform: 'uppercase'}}>
+              MH CinePro
+            </p>
+            <h1 style={{fontSize: 44, lineHeight: 1, margin: '12px 0 8px'}}>Analytiques</h1>
+            <p style={{color: '#b5b5b5', maxWidth: 650, lineHeight: 1.6}}>
+              Vue simple des visites du site. Ces données sont agrégées par jour et ne stockent aucune information
+              personnelle.
+            </p>
+          </div>
+          <div
+            aria-label="MH CinePro"
+            role="img"
+            style={{
+              width: 110,
+              height: 86,
+              backgroundImage: 'url(/images/logo_mh.png)',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: 'contain',
+              flexShrink: 0,
+            }}
+          />
+        </div>
 
         {error ? (
           <div style={{border: '1px solid #593030', background: '#241515', color: '#ffb5b5', marginTop: 28, padding: 20}}>
@@ -93,10 +112,33 @@ function AnalyticsTool() {
                 marginTop: 28,
               }}
             >
-              <MetricCard label="Pages vues aujourd'hui" value={summary.todayPageViews} />
+              <MetricCard label="Pages vues aujourd’hui" value={summary.todayPageViews} />
               <MetricCard label="Pages vues sur 7 jours" value={summary.last7DaysPageViews} />
               <MetricCard label="Pages vues sur 30 jours" value={summary.totalPageViews} />
             </div>
+
+            <section style={{border: '1px solid #2f2f2f', background: '#151515', padding: 20, marginTop: 24}}>
+              <h2 style={{fontSize: 18, margin: '0 0 18px'}}>Évolution récente</h2>
+              <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(64px, 1fr))', gap: 12}}>
+                {summary.days.slice(-14).map((day) => {
+                  const height = Math.max(8, Math.round((day.pageViews / maxDailyViews) * 120))
+
+                  return (
+                    <div key={day.date} style={{display: 'grid', alignItems: 'end', gap: 8}}>
+                      <div
+                        title={`${day.pageViews} pages vues`}
+                        style={{
+                          height,
+                          background: '#ffd60a',
+                          boxShadow: '0 0 18px rgba(255, 214, 10, 0.28)',
+                        }}
+                      />
+                      <div style={{color: '#a0a0a0', fontSize: 11}}>{day.date.slice(5)}</div>
+                    </div>
+                  )
+                })}
+              </div>
+            </section>
 
             <div
               style={{
@@ -112,7 +154,13 @@ function AnalyticsTool() {
                   summary.topPages.map((item) => (
                     <div
                       key={item.label}
-                      style={{display: 'flex', justifyContent: 'space-between', gap: 16, padding: '10px 0', borderTop: '1px solid #292929'}}
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        gap: 16,
+                        padding: '10px 0',
+                        borderTop: '1px solid #292929',
+                      }}
                     >
                       <span style={{color: '#d9d9d9'}}>{item.label}</span>
                       <strong>{item.count.toLocaleString('fr-FR')}</strong>
@@ -129,7 +177,13 @@ function AnalyticsTool() {
                   summary.topEvents.map((item) => (
                     <div
                       key={item.label}
-                      style={{display: 'flex', justifyContent: 'space-between', gap: 16, padding: '10px 0', borderTop: '1px solid #292929'}}
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        gap: 16,
+                        padding: '10px 0',
+                        borderTop: '1px solid #292929',
+                      }}
                     >
                       <span style={{color: '#d9d9d9', textTransform: 'capitalize'}}>{formatEventName(item.label)}</span>
                       <strong>{item.count.toLocaleString('fr-FR')}</strong>

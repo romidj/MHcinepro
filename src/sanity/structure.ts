@@ -6,18 +6,22 @@ export const structure: StructureResolver = (S) =>
     .title('MH CinePro')
     .items([
       S.listItem()
-        .title('Fond Vidéo - Nos Services')
+        .title('Fond vidéo - Nos services')
         .icon(PlayIcon)
         .child(
           S.document()
             .schemaType('servicesBackground')
             .documentId('services-background')
-            .title('Fond Vidéo - Nos Services')
+            .title('Fond vidéo - Nos services')
         ),
 
-      S.documentTypeListItem('project').title('Projets').icon(ProjectsIcon),
+      S.divider(),
 
-      S.documentTypeListItem('galleryImage').title('Galerie').icon(ImageIcon),
+      S.documentTypeListItem('project').title('Projets vidéo').icon(ProjectsIcon),
+
+      S.documentTypeListItem('galleryImage').title('Galerie photos').icon(ImageIcon),
+
+      S.divider(),
 
       S.listItem()
         .title('Paramètres du site')

@@ -3,7 +3,7 @@ import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'project',
-  title: 'Projet Vidéo',
+  title: 'Projet vidéo',
   type: 'document',
   icon: ProjectsIcon,
   fields: [
@@ -11,7 +11,7 @@ export default defineType({
       name: 'title',
       title: 'Titre du projet',
       type: 'string',
-      description: 'Titre affiché au survol de la miniature',
+      description: 'Titre affiché sur la miniature du projet.',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -19,21 +19,21 @@ export default defineType({
       title: 'Description courte',
       type: 'text',
       rows: 3,
-      description: 'Court texte affiché au survol de la miniature (1 à 3 phrases maximum)',
+      description: 'Court texte de présentation du projet, idéalement 1 à 3 phrases.',
       validation: (Rule) => Rule.required().max(250),
     }),
     defineField({
       name: 'videoUrl',
       title: 'Lien de la vidéo',
       type: 'url',
-      description: 'Lien complet YouTube ou Facebook vers la vidéo',
+      description: 'Lien complet YouTube ou Facebook vers la vidéo publiée.',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'platform',
       title: 'Plateforme',
       type: 'string',
-      description: 'Plateforme sur laquelle la vidéo est publiée',
+      description: 'Plateforme sur laquelle la vidéo est publiée.',
       options: {
         list: [
           {title: 'YouTube', value: 'youtube'},
@@ -47,7 +47,7 @@ export default defineType({
       name: 'category',
       title: 'Catégorie',
       type: 'string',
-      description: 'Catégorie du projet utilisée pour filtrer sur la page Portfolio',
+      description: 'Catégorie utilisée pour filtrer les projets sur la page Portfolio.',
       options: {
         list: [
           {title: 'Mariage', value: 'mariage'},
@@ -61,9 +61,9 @@ export default defineType({
     }),
     defineField({
       name: 'thumbnail',
-      title: 'Miniature personnalisée (optionnel)',
+      title: 'Miniature personnalisée',
       type: 'image',
-      description: 'Laissez vide pour utiliser automatiquement la miniature de la vidéo lorsque possible.',
+      description: 'Image utilisée sur le site. Laissez vide seulement si aucune miniature personnalisée n’est disponible.',
       options: {
         hotspot: true,
       },
@@ -72,7 +72,7 @@ export default defineType({
       name: 'publishedAt',
       title: 'Date de publication',
       type: 'datetime',
-      description: 'Date affichée au survol de la miniature',
+      description: 'La date contrôle l’ordre d’affichage: les plus récents apparaissent en premier.',
       initialValue: () => new Date().toISOString(),
       validation: (Rule) => Rule.required(),
     }),

@@ -37,7 +37,7 @@ export function Services({background}: {background: ServicesBackground}) {
       <div className="absolute inset-0 bg-black/25" />
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.88),rgba(0,0,0,0.18)_30%,rgba(0,0,0,0.18)_70%,rgba(0,0,0,0.9))]" />
       <div className="section-shell relative">
-        <h2 className="cinema-heading text-5xl text-white md:text-6xl">Nos services</h2>
+        <h2 className="cinema-heading text-5xl text-white md:text-6xl">Services</h2>
         <div className="mt-14 grid gap-12 md:grid-cols-3 md:grid-rows-3 md:gap-x-12 md:gap-y-14">
           {services.map((service) => (
             <article key={service.title} className={service.className}>
