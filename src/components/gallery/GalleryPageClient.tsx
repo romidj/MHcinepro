@@ -25,10 +25,12 @@ type GalleryPageClientProps = {
 
 const categories: {label: string; value: GalleryCategory}[] = [
   {label: 'Tous', value: 'all'},
-  {label: 'Mariage', value: 'mariage'},
-  {label: 'Nature', value: 'nature'},
+  {label: 'Émission', value: 'emission'},
+  {label: 'Podcast', value: 'podcast'},
+  {label: 'Reportage', value: 'reportage'},
+  {label: 'Document', value: 'document'},
   {label: 'Événement', value: 'evenement'},
-  {label: 'Autre', value: 'autre'},
+  {label: 'Loisir', value: 'loisir'},
 ]
 
 export function GalleryPageClient({

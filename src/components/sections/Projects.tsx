@@ -6,7 +6,7 @@ import type {ProjectPreview} from '@/sanity/lib/types'
 const fallbackProjects: ProjectPreview[] = Array.from({length: 6}, (_, index) => ({
   _id: `fallback-project-${index}`,
   title: ['Reportage', 'Clip musical', 'Portrait', 'Tournage', 'Montage', 'Interview'][index],
-  category: ['evenement', 'autre', 'nature', 'mariage', 'autre', 'evenement'][index],
+  category: ['reportage', 'podcast', 'document', 'emission', 'loisir', 'evenement'][index],
 }))
 
 export function Projects({projects}: {projects: ProjectPreview[]}) {

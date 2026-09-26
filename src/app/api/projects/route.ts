@@ -4,7 +4,15 @@ import {client} from '@/sanity/lib/client'
 import {PROJECTS_COUNT_QUERY, PROJECTS_PAGE_QUERY} from '@/sanity/lib/queries'
 import type {ProjectArchiveItem, ProjectCategory} from '@/sanity/lib/types'
 
-const CATEGORIES: ProjectCategory[] = ['all', 'mariage', 'nature', 'evenement', 'autre']
+const CATEGORIES: ProjectCategory[] = [
+  'all',
+  'emission',
+  'podcast',
+  'reportage',
+  'document',
+  'evenement',
+  'loisir',
+]
 const MAX_PAGE_SIZE = 20
 
 function isProjectCategory(value: string): value is ProjectCategory {

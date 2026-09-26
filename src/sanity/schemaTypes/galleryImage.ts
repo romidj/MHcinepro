@@ -29,10 +29,12 @@ export default defineType({
       description: 'Catégorie utilisée pour filtrer les photos sur la page Galerie.',
       options: {
         list: [
-          {title: 'Mariage', value: 'mariage'},
-          {title: 'Nature', value: 'nature'},
+          {title: 'Émission', value: 'emission'},
+          {title: 'Podcast', value: 'podcast'},
+          {title: 'Reportage', value: 'reportage'},
+          {title: 'Document', value: 'document'},
           {title: 'Événement', value: 'evenement'},
-          {title: 'Autre', value: 'autre'},
+          {title: 'Loisir', value: 'loisir'},
         ],
         layout: 'radio',
       },

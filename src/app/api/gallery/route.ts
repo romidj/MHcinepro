@@ -4,7 +4,15 @@ import {client} from '@/sanity/lib/client'
 import {GALLERY_IMAGES_COUNT_QUERY, GALLERY_IMAGES_PAGE_QUERY} from '@/sanity/lib/queries'
 import type {GalleryCategory, GalleryImagePreview} from '@/sanity/lib/types'
 
-const CATEGORIES: GalleryCategory[] = ['all', 'mariage', 'nature', 'evenement', 'autre']
+const CATEGORIES: GalleryCategory[] = [
+  'all',
+  'emission',
+  'podcast',
+  'reportage',
+  'document',
+  'evenement',
+  'loisir',
+]
 const MAX_PAGE_SIZE = 20
 
 function isGalleryCategory(value: string): value is GalleryCategory {

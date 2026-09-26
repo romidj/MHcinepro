@@ -10,10 +10,12 @@ type GalleryImageCardProps = {
 }
 
 const categoryLabels: Record<string, string> = {
-  mariage: 'Mariage',
-  nature: 'Nature',
+  emission: 'Émission',
+  podcast: 'Podcast',
+  reportage: 'Reportage',
+  document: 'Document',
   evenement: 'Événement',
-  autre: 'Autre',
+  loisir: 'Loisir',
 }
 
 export function GalleryImageCard({image, priority = false, onClick}: GalleryImageCardProps) {

@@ -24,7 +24,14 @@ export type ProjectPreview = {
   publishedAt?: string
 }
 
-export type ProjectCategory = 'all' | 'mariage' | 'nature' | 'evenement' | 'autre'
+export type ProjectCategory =
+  | 'all'
+  | 'emission'
+  | 'podcast'
+  | 'reportage'
+  | 'document'
+  | 'evenement'
+  | 'loisir'
 
 export type ProjectArchiveItem = ProjectPreview & {
   title: string
@@ -43,7 +50,14 @@ export type GalleryPreview = {
   createdAt?: string
 }
 
-export type GalleryCategory = 'all' | 'mariage' | 'nature' | 'evenement' | 'autre'
+export type GalleryCategory =
+  | 'all'
+  | 'emission'
+  | 'podcast'
+  | 'reportage'
+  | 'document'
+  | 'evenement'
+  | 'loisir'
 
 export type GalleryImagePreview = GalleryPreview & {
   caption: string
