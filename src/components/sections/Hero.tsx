@@ -2,36 +2,28 @@ import Image from 'next/image'
 
 export function Hero() {
   return (
-    <section
-      id="home"
-      className="relative overflow-hidden bg-brand-black"
-    >
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_78%_45%,rgba(255,214,10,0.12),transparent_31%),radial-gradient(circle_at_24%_18%,rgba(10,68,120,0.18),transparent_30%)]" />
+    <section id="home" className="relative overflow-hidden bg-brand-black">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_78%_45%,rgba(255,214,10,0.12),transparent_31%),radial-gradient(circle_at_24%_18%,rgba(10,68,120,0.18),transparent_30%)]" />
 
       <div className="section-shell relative grid min-h-[620px] items-center gap-10 md:grid-cols-[0.95fr_1.05fr]">
-
-        {/* LEFT */}
-        <div className="flex h-full flex-col justify-center gap-4">
-          <p className="text-sm uppercase tracking-[0.35em] text-brand-yellow">
-            MH CinePro
-          </p>
-
-          <p className="text-3xl font-black leading-none text-white md:text-4xl">
-            نُجَدِّد لَحظاتِكُم
-          </p>
-
-          <h1 className="text-[clamp(3.5rem,5.5vw,6rem)] leading-[0.92] text-white">
-            MH CINEPRO
+        <div className="flex h-full flex-col justify-center gap-5">
+          <h1 className="max-w-2xl text-4xl font-black leading-[1.05] text-white md:text-6xl">
+            Production Audiovisuelle &amp; Cinématographique en Algérie
           </h1>
 
-          <p className="max-w-xl text-lg leading-8 text-white/75 md:text-xl">
-            بأبعاد سينمائية
+          <p className="max-w-2xl font-display text-xl uppercase leading-tight tracking-[0.08em] text-brand-yellow md:text-2xl">
+            Films Documentaires · Podcasts · Vidéo · Drone · Photographie
+          </p>
+
+          <p className="max-w-xl text-base leading-7 text-white/75 md:text-lg md:leading-8">
+            MH CINEPRO réalise vos projets audiovisuels : films documentaires,
+            podcasts, vidéos professionnelles, reportages, captation d’événements,
+            photographie et prises de vue aériennes par drone. De la conception à la
+            post-production, nous donnons vie à vos idées en Algérie.
           </p>
         </div>
 
-        {/* RIGHT */}
         <div className="flex h-full items-center justify-center">
-
           <Image
             src="/images/logo_mh.png"
             alt="MH CinePro"
@@ -40,9 +32,7 @@ export function Hero() {
             priority
             className="h-auto w-full max-w-[520px] object-contain"
           />
-
         </div>
-
       </div>
     </section>
   )
