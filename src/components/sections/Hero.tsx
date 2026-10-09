@@ -1,4 +1,4 @@
-import { CameraViewer } from '@/components/three/CameraViewer'
+import Image from 'next/image'
 
 export function Hero() {
   return (
@@ -32,9 +32,14 @@ export function Hero() {
         {/* RIGHT */}
         <div className="flex h-full items-center justify-center">
 
-          <div className="relative w-full max-w-[680px]">
-            <CameraViewer />
-          </div>
+          <Image
+            src="/images/logo_mh.png"
+            alt="MH CinePro"
+            width={640}
+            height={640}
+            priority
+            className="h-auto w-full max-w-[520px] object-contain"
+          />
 
         </div>
 
