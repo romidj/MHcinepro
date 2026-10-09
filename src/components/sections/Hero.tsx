@@ -7,8 +7,8 @@ export function Hero() {
 
       <div className="section-shell relative grid min-h-[620px] items-center gap-10 md:grid-cols-[0.95fr_1.05fr]">
         <div className="flex h-full flex-col justify-center gap-5">
-          <h1 className="max-w-2xl text-4xl font-black leading-[1.05] text-white md:text-6xl">
-            Production Audiovisuelle &amp; Cinématographique en Algérie
+          <h1 className="max-w-2xl text-3xl font-black leading-[1.05] text-white md:text-6xl">
+            Votre Partenaire Audiovisuel en Algérie
           </h1>
 
           <p className="max-w-2xl font-display text-xl uppercase leading-tight tracking-[0.08em] text-brand-yellow md:text-2xl">
