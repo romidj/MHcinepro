@@ -56,7 +56,7 @@ export const PROJECTS_COUNT_QUERY = defineQuery(/* groq */ `
 
 export const LATEST_GALLERY_IMAGES_QUERY = defineQuery(/* groq */ `
   *[_type == "galleryImage" && defined(createdAt)]
-    | order(createdAt desc)[0...3]{
+    | order(createdAt desc)[0...6]{
       _id,
       caption,
       category,

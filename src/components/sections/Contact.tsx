@@ -1,12 +1,13 @@
 import type {ReactNode} from 'react'
-import {AtSign, Globe, Mail, MapPin, Phone, Send} from 'lucide-react'
+import {Mail, MapPin, Phone, Send} from 'lucide-react'
+import {FaFacebook, FaInstagram, FaYoutube} from 'react-icons/fa'
 
 import type {SiteSettings} from '@/sanity/lib/types'
 
 const fallbackSettings = {
   studioEmail: 'hello@mhcinepro.com',
   studioPhone: '+213 00 00 00 00',
-  studioAddress: 'Alger, Algérie',
+  studioAddress: 'Draa Ben khedda, tizi ouzou, Algérie',
 }
 
 export function Contact({settings}: {settings: SiteSettings}) {
@@ -17,11 +18,10 @@ export function Contact({settings}: {settings: SiteSettings}) {
 
   return (
     <section id="contact" className="bg-brand-black px-0 py-20 md:py-28">
-      <div className="section-shell grid gap-14 lg:grid-cols-2 lg:items-start">
-        <div>
-          <h2 className="cinema-heading text-6xl text-white md:text-7xl">
+      <div className="section-shell grid gap-14 lg:grid-cols-2 lg:items-stretch">
+        <div className="flex h-full flex-col">
+          <h2 className="cinema-heading text-3xl text-white md:text-5xl">
             Contactez-
-            <br />
             nous
           </h2>
 
@@ -31,15 +31,23 @@ export function Contact({settings}: {settings: SiteSettings}) {
             <ContactLine icon={<MapPin className="h-4 w-4" />} label="Localisation" value={contact.studioAddress} />
           </div>
 
-          <a
-            href="https://maps.app.goo.gl/Q15PoF97UEnskQnv9"
-            target="_blank"
-            rel="noreferrer"
-            className="mt-10 grid h-44 place-items-center border border-white/10 bg-[linear-gradient(135deg,#9ca3af,#e5e7eb_35%,#8b5cf6_36%,#d1d5db_37%,#f8fafc)] text-center text-xs font-bold uppercase tracking-[0.25em] text-black/60 transition hover:border-brand-yellow hover:shadow-card"
-          >
-            Google Map
-            <span className="block text-[10px] font-normal normal-case tracking-normal">Ouvrir la localisation</span>
-          </a>
+          <div className="relative mt-10 min-h-44 flex-1 overflow-hidden border border-white/10 transition hover:border-brand-yellow hover:shadow-card">
+            <iframe
+              title="Localisation MH CinePro"
+              src="https://www.google.com/maps?q=36.7327977,3.9656477&z=17&output=embed"
+              className="h-full w-full border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+            <a
+              href="https://maps.app.goo.gl/WVj7PLRDea1yf4zr7"
+              target="_blank"
+              rel="noreferrer"
+              className="absolute inset-x-0 bottom-0 bg-black/75 px-3 py-2 text-center text-[10px] font-bold uppercase tracking-[0.18em] text-white transition hover:bg-brand-yellow hover:text-black"
+            >
+              Ouvrir la localisation
+            </a>
+          </div>
         </div>
 
         <div className="bg-[linear-gradient(120deg,#111,#14110a)] p-8 shadow-[0_0_40px_rgba(255,214,10,0.08)] md:p-14">
@@ -68,14 +76,14 @@ export function Contact({settings}: {settings: SiteSettings}) {
           <div className="mt-12">
             <p className="text-xs font-bold text-white/22">Nous trouver sur</p>
             <div className="mt-4 flex gap-5">
-              <Social href={`mailto:${contact.studioEmail}`} label="Email">
-                <Mail className="h-6 w-6 text-brand-yellow" />
+              <Social href={contact.instagramUrl || '#contact'} label="Instagram">
+                <FaInstagram className="h-6 w-6 text-pink-500" />
               </Social>
               <Social href={contact.facebookUrl || '#contact'} label="Facebook">
-                <Globe className="h-6 w-6 text-blue-500" />
+                <FaFacebook className="h-6 w-6 text-blue-500" />
               </Social>
-              <Social href={contact.instagramUrl || '#contact'} label="Instagram">
-                <AtSign className="h-6 w-6 text-pink-500" />
+              <Social href={contact.youtubeChannelUrl || '#contact'} label="YouTube">
+                <FaYoutube className="h-6 w-6 text-red-500" />
               </Social>
             </div>
           </div>

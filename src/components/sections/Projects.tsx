@@ -16,11 +16,11 @@ export function Projects({projects}: {projects: ProjectPreview[]}) {
     <section id="projects" className="bg-brand-black py-16 md:py-20">
       <div className="section-shell">
         <div className="flex items-end justify-between gap-6">
-          <h2 className="cinema-heading text-5xl text-white md:text-6xl">Projets</h2>
+          <h2 className="cinema-heading text-4xl text-white md:text-5xl">Projets</h2>
           <Link
             href="/portfolio"
             prefetch
-            className="border-b-2 border-brand-yellow pb-1 text-sm font-black text-brand-yellow"
+            className="inline-flex items-center border border-brand-yellow px-5 py-3 text-sm font-bold uppercase tracking-[0.08em] text-brand-yellow transition hover:text-brand-red hover:border-brand-red hover:text-black"
           >
             Voir tous les projets
           </Link>
