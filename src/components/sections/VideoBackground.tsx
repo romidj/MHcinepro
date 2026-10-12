@@ -27,56 +27,33 @@ export function VideoBackground({background}: VideoBackgroundProps) {
   )
 
   const [activeIndex, setActiveIndex] = useState(0)
-  const [nextIndex, setNextIndex] = useState<number | null>(null)
 
   if (videos.length === 0) {
     return null
   }
 
   const activeVideo = videos[activeIndex]
-  const nextVideo = nextIndex === null ? null : videos[nextIndex]
 
-  function startTransition() {
-    if (videos.length <= 1 || nextIndex !== null) return
-
-    setNextIndex((activeIndex + 1) % videos.length)
-  }
-
-  function completeTransition() {
-    if (nextIndex === null) return
-
-    setActiveIndex(nextIndex)
-    setNextIndex(null)
+  function showNextVideo() {
+    if (videos.length > 1) {
+      setActiveIndex((currentIndex) => (currentIndex + 1) % videos.length)
+    }
   }
 
   return (
     <div className="absolute inset-0">
       <video
         key={activeVideo.key}
-        className="absolute inset-0 h-full w-full object-cover opacity-45 transition-opacity duration-1000 ease-in-out"
+        className="absolute inset-0 h-full w-full object-cover opacity-45"
         autoPlay
         muted
         loop={videos.length === 1}
         playsInline
-        onEnded={startTransition}
-        onError={startTransition}
+        onEnded={showNextVideo}
+        onError={showNextVideo}
       >
         <source src={activeVideo.url} type={activeVideo.mimeType} />
       </video>
-
-      {nextVideo ? (
-        <video
-          key={nextVideo.key}
-          className="absolute inset-0 h-full w-full object-cover opacity-45 transition-opacity duration-1000 ease-in-out"
-          autoPlay
-          muted
-          playsInline
-          onLoadedData={() => window.setTimeout(completeTransition, 1000)}
-          onError={completeTransition}
-        >
-          <source src={nextVideo.url} type={nextVideo.mimeType} />
-        </video>
-      ) : null}
     </div>
   )
 }

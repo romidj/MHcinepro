@@ -11,10 +11,10 @@ export function Services({ background }: { background: ServicesBackground }) {
       {hasVideo ? (
         <VideoBackground background={background} />
       ) : (
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.96),rgba(0,0,0,0.42),rgba(0,0,0,0.78)),radial-gradient(circle_at_48%_58%,rgba(255,118,24,0.24),transparent_30%),radial-gradient(circle_at_58%_58%,rgba(40,74,83,0.42),transparent_28%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.90),rgba(0, 0, 0, 0.05),rgba(0,0,0,0.78)),radial-gradient(circle_at_48%_38%,rgba(255,118,24,0.24),transparent_30%),radial-gradient(circle_at_58%_58%,rgba(40,74,83,0.42),transparent_28%)]" />
       )}
       <div className="absolute inset-0 bg-black/25" />
-      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.88),rgba(0,0,0,0.18)_30%,rgba(0,0,0,0.18)_70%,rgba(0,0,0,0.9))]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.80),rgba(0,0,0,0.08)_30%,rgba(0,0,0,0.08)_70%,rgba(0,0,0,0.8))]" />
       <div className="section-shell relative">
         <h1 className="max-w-3xl text-xl font-black leading-[1.08] text-white md:text-4xl">
           MH CINEPRO
