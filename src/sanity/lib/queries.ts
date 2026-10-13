@@ -16,8 +16,21 @@ export const SERVICES_BACKGROUND_QUERY = defineQuery(/* groq */ `
 `)
 
 export const LATEST_PROJECTS_QUERY = defineQuery(/* groq */ `
-  *[_type == "project" && defined(publishedAt)]
-    | order(publishedAt desc)[0...6]{
+  [
+    (*[_type == "project" && defined(publishedAt) && category == "emission"]
+      | order(publishedAt desc, _id asc)[0]),
+    (*[_type == "project" && defined(publishedAt) && category == "podcast"]
+      | order(publishedAt desc, _id asc)[0]),
+    (*[_type == "project" && defined(publishedAt) && category == "reportage"]
+      | order(publishedAt desc, _id asc)[0]),
+    (*[_type == "project" && defined(publishedAt) && category == "document"]
+      | order(publishedAt desc, _id asc)[0]),
+    (*[_type == "project" && defined(publishedAt) && category == "evenement"]
+      | order(publishedAt desc, _id asc)[0]),
+    (*[_type == "project" && defined(publishedAt) && category == "loisir"]
+      | order(publishedAt desc, _id asc)[0])
+  ][defined(@)]
+    | order(publishedAt desc, _id asc){
       _id,
       title,
       description,
