@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MH CinePro
+
+**Official Website:** [mhcinepro.com](https://mhcinepro.com)
+
+A website for MH CinePro, an audiovisual and cinematographic production studio based in Algeria, showcasing its creative work and productions.
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org/) — React framework
+- TypeScript
+- [Sanity](https://www.sanity.io/) — Content management system
+- [Tailwind CSS](https://tailwindcss.com/) — Styling
+- [Vercel](https://vercel.com/) — Deployment
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+Make sure you have [Node.js](https://nodejs.org/) and npm installed.
+
+### Installation
+
+Clone the repository and navigate to the project directory:
+
+```bash
+git clone <your-repository-url>
+cd mh-cinepro
+```
+
+Install the dependencies:
+
+```bash
+npm install
+```
+
+Create a `.env.local` file in the project root and configure the required environment variables for Sanity and any other integrated services.
+
+### Run the Development Server
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The application automatically updates as you edit the source files.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Content Management
 
-## Learn More
+The website uses Sanity Studio to manage its content.
 
-To learn more about Next.js, take a look at the following resources:
+- **Live Website:** [https://mhcinepro.com](https://mhcinepro.com)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Access to Sanity Studio requires appropriate authorization.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
+The website is deployed on [Vercel](https://vercel.com/).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+For more information, see the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Useful Resources
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Learn Next.js](https://nextjs.org/learn)
+- [Sanity Documentation](https://www.sanity.io/docs)
+- [Vercel Documentation](https://vercel.com/docs)
